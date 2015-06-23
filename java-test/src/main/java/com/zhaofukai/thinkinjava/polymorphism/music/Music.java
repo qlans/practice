@@ -1,0 +1,17 @@
+//: polymorphism/music/Music.java
+// Inheritance & upcasting.
+package com.zhaofukai.thinkinjava.polymorphism.music;
+
+public class Music {
+    public static void tune(Instrument i) {
+        // ...
+        i.play(Note.MIDDLE_C);
+    }
+
+    public static void main(String[] args) {
+        Instrument flute = new Wind();
+        tune(flute); // Upcasting
+    }
+} /* Output:
+Wind.play() MIDDLE_C
+*///:~
