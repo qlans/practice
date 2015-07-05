@@ -1,6 +1,9 @@
 package com.zhaofukai.thinkinjava.interclasses;//: innerclasses/Sequence.java
 // Holds a sequence of Objects.
 
+import com.zhaofukai.thinkinjava.initialzation.ObjectReBirth;
+import org.springframework.orm.jpa.vendor.OpenJpaDialect;
+
 interface Selector {
     boolean end();
 
@@ -42,8 +45,27 @@ public class Sequence {
         }
     }
 
+    private class SequenceReverseSelector implements Selector {
+        private int i = items.length - 1;
+        public boolean end() {
+            return i < 0;
+        }
+        public Object current() {
+            return items[i];
+        }
+        public void next() {
+            if (i >= 0) {
+                i--;
+            }
+        }
+    }
+
     public Selector selector() {
         return new SequenceSelector();
+    }
+
+    public Selector reverseSelector() {
+        return new SequenceReverseSelector();
     }
 
     public static void main(String[] args) {
@@ -51,6 +73,11 @@ public class Sequence {
         for (int i = 0; i < 10; i++)
             sequence.add(Integer.toString(i));
         Selector selector = sequence.selector();
+        while (!selector.end()) {
+            System.out.print(selector.current() + " ");
+            selector.next();
+        }
+        selector = sequence.reverseSelector();
         while (!selector.end()) {
             System.out.print(selector.current() + " ");
             selector.next();
