@@ -22,8 +22,10 @@ interface Cycle {
 }
 
 class Unicycle implements Cycle {
+    int x = 10;
     public void move() {
         print("unicycle");
+        System.out.println(x);
     }
 }
 
