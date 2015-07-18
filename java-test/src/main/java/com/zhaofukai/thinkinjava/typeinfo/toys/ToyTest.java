@@ -2,6 +2,8 @@
 // Testing class Class.
 package com.zhaofukai.thinkinjava.typeinfo.toys;
 
+import java.lang.reflect.InvocationTargetException;
+
 import static com.zhaofukai.thinkinjava.net.util.Print.print;
 
 interface HasBatteries {
@@ -20,9 +22,11 @@ class Toy {
     // Comment out the following default constructor
     // to see NoSuchMethodError from (*1*)
     Toy() {
+        print("Creating Toy() object");
     }
 
     Toy(int i) {
+        print("Creating Toy(" + i + ") object");
     }
 }
 
@@ -42,7 +46,18 @@ public class ToyTest {
     }
 
     public static void main(String[] args) {
-        Class c = null;
+        try {
+            Toy.class.getDeclaredConstructor(int.class).newInstance();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        }
+        /*Class c = null;
         try {
             c = Class.forName("com.zhaofukai.thinkinjava.typeinfo.toys.FancyToy");
         } catch (ClassNotFoundException e) {
@@ -64,7 +79,7 @@ public class ToyTest {
             print("Cannot access");
             System.exit(1);
         }
-        printInfo(obj.getClass());
+        printInfo(obj.getClass());*/
     }
 } /* Output:
 Class name: typeinfo.toys.FancyToy is interface? [false]
