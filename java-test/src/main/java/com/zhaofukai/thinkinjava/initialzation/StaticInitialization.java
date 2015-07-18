@@ -45,6 +45,11 @@ class Cupboard {
 }
 
 public class StaticInitialization {
+
+    public static void ff() {
+        print("okkkkkkkkkkkkkkkkkkkkkkkk!");
+    }
+
     public static void main(String[] args) {
         print("Creating new Cupboard() in main");
         new Cupboard();
@@ -52,6 +57,7 @@ public class StaticInitialization {
         new Cupboard();
         table.f2(1);
         cupboard.f3(1);
+        ff();
     }
 
     static Table table = new Table();

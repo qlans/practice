@@ -8,8 +8,12 @@ public class Pets {
     public static final PetCreator creator =
             new LiteralPetCreator();
 
-    public static Pet randomPet() {
-        return creator.randomPet();
+//    public static Pet randomPet() {
+//        return creator.randomPet();
+//    }
+
+    public static Pet randomPet() { // new method version
+        return PetFactory.createRandom();
     }
 
     public static Pet[] createArray(int size) {
