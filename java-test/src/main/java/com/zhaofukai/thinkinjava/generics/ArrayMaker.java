@@ -19,6 +19,7 @@ public class ArrayMaker<T> {
                 new ArrayMaker<String>(String.class);
         String[] stringArray = stringMaker.create(9);
         System.out.println(Arrays.toString(stringArray));
+        System.out.println(Array.newInstance(String.class, 9));
     }
 } /* Output:
 [null, null, null, null, null, null, null, null, null]
